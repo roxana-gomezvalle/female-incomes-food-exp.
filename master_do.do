@@ -43,14 +43,21 @@ sum share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome female_earners /
 	age_female age_male educ_female educ_male i.hh_composition food_price [aw=peso2]
 	
 ttest share_exp_hfood, by (area_residence)
-  
-*-----------3.2: OLS estimation
+ 
+ *-----------3.2: Breusch-Pagan test
+reg share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
+    age_female age_male educ_female educ_male female_earners male_earners  ///
+	i.area_residence ln_hhsize i.region_residence hh_children i.hh_composition
+hettest
+estat imtest, white
+
+*-----------3.3: OLS estimation
 reg share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
     age_female age_male educ_female educ_male female_earners male_earners  ///
 	i.area_residence ln_hhsize i.region_residence hh_children i.hh_composition [aw=peso2] ///
 	, vce (r)
 
-*-----------3.3: Leverage (univariate)
+*-----------3.4: Leverage (univariate)
 *Manual identification of high leverage data points
 local variables share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
     ln_hhsize hh_children  
@@ -72,7 +79,7 @@ replace  out_hh_children = . if (hh_children == 10)
 clonevar out_ln_fincome = ln_fincome
 replace  out_ln_fincome = . if 	(ln_fincome < 4)
 	
-*-----------3.4: Regression with transformed variables
+*-----------3.5: Regression with transformed variables
 reg out_share_exp_food out_ln_fincome sq_fincome ln_mincome sq_mincome out_food_price ///
     age_female age_male educ_female educ_male female_earners male_earners  ///
 	i.area_residence ln_hhsize i.region_residence out_hh_children          ///
@@ -84,7 +91,7 @@ reg share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
 	i.area_residence ln_hhsize i.region_residence hh_children i.hh_composition [aw=peso2] 
 lvr2plot
 	
-*-----------3.5: Robust regression analysis  
+*-----------3.6: Robust regression analysis  
 robreg mm share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
     age_female age_male educ_female educ_male female_earners male_earners        ///
 	i.area_residence ln_hhsize i.region_residence hh_children i.hh_composition   ///
