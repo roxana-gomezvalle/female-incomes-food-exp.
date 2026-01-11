@@ -96,7 +96,7 @@ gen clothing2 = (s5p41b * s5p41c) / 12
 *---------1.3.8: Wages and other incomes from second job
 egen    i_wage2 = rsum (wages2 comissions2 holidays2 meals2 housing2 transport2 clothing2)
 replace i_wage2 = . if ((wages2 == .) & (comissions2 == .) & (holidays2 == .) ///
-    & (meals2 == .) & (housing2 == .) & (transport2 == .) & (clothing == .)) 
+    & (meals2 == .) & (housing2 == .) & (transport2 == .) & (clothing2 == .)) 
 
 *----------------------------1.4: Independent employment second job
 replace s5p42b = . if ((s5p42b > 97) | (s5p42b == .))
@@ -279,3 +279,4 @@ exit
 
 Notes:
 1. CEPAL (2018) - Medición de la pobreza por ingresos: Actualización metodológica y resultados. Metodologías CEPAL 2.
+
