@@ -374,33 +374,3 @@ save "${pjdatabase}/emnv14-total-hh-expenditures.dta", replace
 exit
 *End of do-file
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
- 
-
-
-
-
- 
-
-
-
-
-
-
-
