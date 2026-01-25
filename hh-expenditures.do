@@ -149,7 +149,7 @@ save "${pjdatabase}/emnv14-alcohol-cigarettes.dta", replace
                     6: Transportation expenditures
 ====================================================================*/
 
-*--------------------6.1: Transportation (includes fuel)
+*--------------------6.1: Transportation (including fuel)
 use "${pjdatabase}/emnv14_09_parte_b1_de_la_seccion_7.dta", clear
 rename *, lower
 numlabel, add
@@ -373,4 +373,5 @@ save "${pjdatabase}/emnv14-total-hh-expenditures.dta", replace
 
 exit
 *End of do-file
+
 
