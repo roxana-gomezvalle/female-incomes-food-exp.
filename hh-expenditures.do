@@ -166,7 +166,7 @@ keep if (hogar == 1)
 keep i00 dominio4 i06 exp_transport
 save "${pjdatabase}/emnv14-transportation.dta", replace
 
-*--------------------6.2: Other transport expenses (includes fuel)
+*--------------------6.2: Other transport expenses (including fuel)
 use "${pjdatabase}/emnv14_11_parte_b3_de_la_seccion_7.dta", clear
 rename *, lower
 numlabel, add
@@ -373,5 +373,6 @@ save "${pjdatabase}/emnv14-total-hh-expenditures.dta", replace
 
 exit
 *End of do-file
+
 
 
