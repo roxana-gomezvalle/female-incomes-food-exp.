@@ -186,7 +186,7 @@ save "${pjdatabase}/emnv14-transportation.dta", replace
 /*====================================================================
                     7: Housheold goods
 ====================================================================*/
-*--------------------7.1: Household goods - montly
+*--------------------7.1: Household goods - monthly
 use "${pjdatabase}/emnv14_10_parte_b2_de_la_seccion_7.dta", clear
 rename *, lower
 numlabel, add
@@ -373,6 +373,7 @@ save "${pjdatabase}/emnv14-total-hh-expenditures.dta", replace
 
 exit
 *End of do-file
+
 
 
 
