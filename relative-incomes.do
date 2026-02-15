@@ -8,7 +8,7 @@ Creation Date: 21 January 2023
 /*====================================================================
                         0: Program set up
 ====================================================================*/
-global pjdatabase "C:\Users\User\Documents\FI and expenditures\Database"
+global pjdatabase "C:\Users\User\OneDrive\FI and expenditures\Database"
 
 set more off , perm
 clear all
@@ -279,4 +279,5 @@ exit
 
 Notes:
 1. CEPAL (2018) - Medición de la pobreza por ingresos: Actualización metodológica y resultados. Metodologías CEPAL 2.
+
 
