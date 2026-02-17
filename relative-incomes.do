@@ -166,7 +166,7 @@ lab var sq_mincome "Square of male labour income"
                         5: Number of household earners
 ====================================================================*/
 *-----------5.1: Household earners
-gen aux_earner = (i_income > 0)
+gen aux_earner = (i_income > 0) & (i_income != .)
 bys i00: egen hh_earner = sum(aux_earner)
 lab var       hh_earner "Number of household earners"
 
@@ -279,5 +279,6 @@ exit
 
 Notes:
 1. CEPAL (2018) - Medición de la pobreza por ingresos: Actualización metodológica y resultados. Metodologías CEPAL 2.
+
 
 
