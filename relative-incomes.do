@@ -210,12 +210,12 @@ bys i00: egen hh_children = sum (aux_children)
 lab var       hh_children "Number of children in the household"
 
 *-----------6.5: Average age women
-bys i00: egen aux_agef = mean(s2p2a) if ((s2p5 == 2) & (i_income > 0))
+bys i00: egen aux_agef = mean(s2p2a) if ((s2p5 == 2) & (i_income > 0 & i_income!=.))
 bys i00: egen age_female = max(aux_agef)
 lab var       age_female "Average age of female earners"
 
 *-----------6.6: Average age men
-bys i00: egen aux_agem = mean(s2p2a) if ((s2p5 == 1) & (i_income > 0))
+bys i00: egen aux_agem = mean(s2p2a) if ((s2p5 == 1) & (i_income > 0 & i_income!=.))
 bys i00: egen age_male = max(aux_agem)
 lab var       age_male "Average age of male earners"
 
@@ -230,12 +230,12 @@ lab var years_schooling "Individual years of schooling"
 replace years_schooling = 0 if (years_schooling == .)
 
 *-------6.7.2: Average years of schooling women
-bys i00: egen aux_eduf = mean(years_schooling) if ((s2p5 == 2) & (i_income > 0))
+bys i00: egen aux_eduf = mean(years_schooling) if ((s2p5 == 2) & (i_income > 0 & i_income!=.))
 bys i00: egen educ_female = max(aux_eduf)
 lab var       educ_female "Average years of schooling of female earners"
 
 *-------6.7.3: Average years of schooling men
-bys i00: egen aux_edum = mean(years_schooling) if ((s2p5 == 1) & (i_income > 0))
+bys i00: egen aux_edum = mean(years_schooling) if ((s2p5 == 1) & (i_income > 0 & i_income!=.))
 bys i00: egen educ_male = max(aux_edum)
 lab var       educ_male "Average years of schooling of male earners"
 
@@ -243,7 +243,7 @@ lab var       educ_male "Average years of schooling of male earners"
 *-------6.8.1: Dual-earner nuclear households with dependent children
 gen nuclear_aux = (s2p4 == 2)
 replace nuclear_aux = 1 if ((s2p4 == 1) & (s2p7 < 3))
-replace nuclear_aux = 1 if ((s2p4 == 3) & (i_income == 0))
+replace nuclear_aux = 1 if ((s2p4 == 3) & (i_income == 0 | i_income == .))
 
 bys i00: egen hh_composition = mean(nuclear_aux)
 recode hh_composition (1 = 1) (else = 0)
@@ -279,6 +279,7 @@ exit
 
 Notes:
 1. CEPAL (2018) - Medición de la pobreza por ingresos: Actualización metodológica y resultados. Metodologías CEPAL 2.
+
 
 
 
