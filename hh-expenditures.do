@@ -8,8 +8,8 @@ Creation Date: 10 Jan 2023
 /*====================================================================
                         0: Program set up
 ====================================================================*/
-global pjdatabase "C:\Users\User\Documents\FI and expenditures\Database"
-global do-files   "C:\Users\User\Documents\FI and expenditures\DO-files"
+global pjdatabase "C:\Users\User\OneDrive\FI and expenditures\Database"
+global do-files   "C:\Users\User\OneDrive\FI and expenditures\Do-files"
 
 set more off , perm
 clear all
@@ -36,7 +36,7 @@ foreach dollar of local dollars {
 }
 
 egen    exp_hservices = rsum(s1p12a s1p17 s1p20 s1p23 s1p24 s1p27 s1p30a s1p30b ///
-                        s1p30c s1p30d s1p30e s1p30f s1p12a s1p12b s1p13a s1p13b ///
+                        s1p30c s1p30d s1p30e s1p30f s1p12b s1p13a s1p13b ///
 						s1p14a s1p14b)
 lab var exp_hservices "Household services expenditures"
 
@@ -373,6 +373,7 @@ save "${pjdatabase}/emnv14-total-hh-expenditures.dta", replace
 
 exit
 *End of do-file
+
 
 
 
