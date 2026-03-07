@@ -8,8 +8,8 @@ Creation Date: 16 Dec 2022
 /*====================================================================
                         0: Program set up
 ====================================================================*/
-global pjdatabase "C:\Users\User\Documents\FI and expenditures\Database"
-global dofiles   "C:\Users\User\Documents\FI and expenditures\Do-files"
+global pjdatabase "C:\Users\User\OneDrive\FI and expenditures\Database"
+global dofiles   "C:\Users\User\OneDrive\FI and expenditures\Do-files"
 
 set more off , perm
 clear all
@@ -89,7 +89,7 @@ reg out_share_exp_food out_ln_fincome sq_fincome ln_mincome sq_mincome out_food_
 reg share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
     age_female age_male educ_female educ_male female_earners male_earners  ///
 	i.area_residence ln_hhsize i.region_residence hh_children i.hh_composition [aw=peso2] 
-lvr2plot
+lvr2plotc
 	
 *-----------3.6: Robust regression analysis  
 robreg mm share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price ///
@@ -99,5 +99,6 @@ robreg mm share_exp_hfood ln_fincome sq_fincome ln_mincome sq_mincome food_price
 	
 exit
 *End of do-file
+
 
 
