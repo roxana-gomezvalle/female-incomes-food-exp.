@@ -93,7 +93,7 @@ gen transport2 = s5p40b
 *---------1.3.7: Clothing
 gen clothing2 = (s5p41b * s5p41c) / 12
 
-*---------1.3.8: Wages and other incomes from second job
+*---------1.3.8: Total wages and other incomes from second job
 egen    i_wage2 = rsum (wages2 comissions2 holidays2 meals2 housing2 transport2 clothing2)
 replace i_wage2 = . if ((wages2 == .) & (comissions2 == .) & (holidays2 == .) ///
     & (meals2 == .) & (housing2 == .) & (transport2 == .) & (clothing2 == .)) 
@@ -122,9 +122,9 @@ replace i_income = . if ((i_wage == .) & (i_se == .) & (i_wage2 == .) ///
 lab var i_income "Individual monthly labour income"
 
 /*====================================================================
-                        2: Household labor income
+                        2: Household labour income
 ====================================================================*/
-*-----------2.1: HH labor incomes
+*-----------2.1: HH labour incomes
 bys i00: egen hh_income = sum(i_income)
 lab var       hh_income "HH monthly labour income"
 
@@ -279,6 +279,7 @@ exit
 
 Notes:
 1. CEPAL (2018) - Medición de la pobreza por ingresos: Actualización metodológica y resultados. Metodologías CEPAL 2.
+
 
 
 
