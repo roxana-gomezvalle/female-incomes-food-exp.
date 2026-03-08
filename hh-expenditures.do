@@ -111,7 +111,7 @@ bys i00: egen exp_hfood = sum(food_aux)
 lab var       exp_hfood "Housheold food expenditures"
 replace       exp_hfood = . if ((s7p3 == 1) & (s7p6 == .))
 
-*--------------------4.1: Aggregated price for food
+*--------------------4.2: Aggregated price for food
 replace s7p5a = . if (s7p5a > 9999)
 gen aux_price0 = s7p6 / s7p5a
 gen aux_price1 = s7p10 / s7p9a
@@ -204,7 +204,7 @@ keep if (hogar == 1)
 keep i00 dominio4 i06 exp_hgoods
 save "${pjdatabase}/emnv14-hhgoods.dta", replace
 
-*--------------------7.1: Household goods - semester
+*--------------------7.2: Household goods - semester
 use "${pjdatabase}/emnv14_11_parte_b3_de_la_seccion_7.dta", clear
 rename *, lower
 numlabel, add
@@ -248,7 +248,7 @@ keep if (hogar == 1)
 keep i00 dominio4 i06 exp_hpersonalg
 save "${pjdatabase}/emnv14-personal-goods.dta", replace
 
-*--------------------8.1: Clothing and personal goods - semester
+*--------------------8.2: Clothing and personal goods - semester
 use "${pjdatabase}/emnv14_11_parte_b3_de_la_seccion_7.dta", clear
 rename *, lower
 numlabel, add
@@ -373,6 +373,7 @@ save "${pjdatabase}/emnv14-total-hh-expenditures.dta", replace
 
 exit
 *End of do-file
+
 
 
 
